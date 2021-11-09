@@ -7,7 +7,10 @@
 	}
  	
  	function get(){
- 		return $this->db->get('tb_gedung');
+		$this->db->select('tb_gedung.id, nama_gedung, kode_gedung, panjang, lebar, tinggi, lantai, foto, kondisi');
+		$this->db->from('tb_gedung');
+		$this->db->join('tb_kondisi', 'tb_gedung.id_kondisi = tb_kondisi.id', 'left');
+		return $this->db->get();
  	}
 
  	function findBy($id){

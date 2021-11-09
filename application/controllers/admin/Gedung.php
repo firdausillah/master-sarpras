@@ -1,82 +1,127 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class User extends CI_Controller
+class Gedung extends CI_Controller
 {
     function __construct()
     {
         parent::__construct();
-        $this->load->model('UserModel');
+        $this->load->model('GedungModel');
+        $this->load->model('KondisiModel');
 
-        // if ($this->session->userdata('role') != 'admin') {
+        // if ($this->session->gedungdata('role') != 'admin') {
         //     redirect(base_url("auth/login"));
         // }
     }
 
-    public function index()
-    {
+    public function index(){
         $data = [
-            'title' => 'User',
-            'user' => $this->UserModel->get()->result(),
-            'content' => 'admin/user/table'
+            'title' => 'Gedung',
+            'gedung' => $this->GedungModel->get()->result(),
+            'kondisi' => $this->KondisiModel->get()->result(),
+            'content' => 'admin/gedung/table'
         ];
 
         $this->load->view('layout_admin/base', $data);
     }
 
     public function save(){
+        if (! empty($_FILES['foto']['name'])) {
+            $config = [
+                'upload_path' => './uploads/img/sarpras',
+                'allowed_types' => 'gif|jpg|png',
+                'max_size' => 2000,
+                'file_name' => 'img_'. $this->input->post('kode_gedung'),
+                'overwrite' => true
+            ];
+            
+            $this->load->library('upload', $config);
+
+            if ($this->upload->do_upload('foto')) $foto = $this->upload->data('file_name');
+            else exit('Error : ' . $this->upload->display_errors());
+        }
+
         $data = [
-            'nama' => $this->input->post('nama'),
-            'username'  => $this->input->post('username'),
-            'password' => $this->input->post('password'),
-            'role'    => $this->input->post('role')
+            'kode_gedung' => $this->input->post('kode_gedung'),
+            'nama_gedung' => $this->input->post('nama_gedung'),
+            'panjang' => $this->input->post('panjang'),
+            'lebar' => $this->input->post('lebar'),
+            'tinggi' => $this->input->post('tinggi'),
+            'lantai' => $this->input->post('lantai'),
+            'foto' => $foto,
+            'id_kondisi' => $this->input->post('id_kondisi'),
         ];
         
-        if ($this->UserModel->add($data)) {
+        if ($this->GedungModel->add($data)) {
             $this->session->set_flashdata('flash', 'Data berhasil dimasukan');
         } else {
             $this->session->set_flashdata('flash', 'Oops! Terjadi suatu kesalahan');
         }
 
-        redirect(base_url('admin/user'));
+        redirect(base_url('admin/gedung'));
     }
 
     public function edit($id){
-        // $user = $this->UserModel->findBy(['id' => $id])->row();
-
-        // print_r($user->nama); exit();
         $data = [
-            'title' => 'Edit User',
-            'user' => $this->UserModel->findBy(['id' => $id])->row(),
-            'content' => 'admin/user/edit'
+            'title' => 'Edit Gedung',
+            'gedung' => $this->GedungModel->findBy(['id' => $id])->row(),
+            'kondisi' => $this->KondisiModel->get()->result(),
+            'content' => 'admin/gedung/edit'
         ];
 
         $this->load->view('layout_admin/base', $data);
     }
 
     public function update($id){
+        if (!empty($_FILES['foto']['name'])) {
+            $config = [
+                'upload_path' => './uploads/img/sarpras',
+                'allowed_types' => 'gif|jpg|png',
+                'max_size' => 2000,
+                'file_name' => 'img_' . $this->input->post('kode_gedung'),
+                'overwrite' => true
+            ];
+
+            $this->load->library('upload', $config);
+
+            if ($this->upload->do_upload('foto')) $foto = $this->upload->data('file_name');
+            else exit('Error : ' . $this->upload->display_errors());
+        }
+        if (!empty($foto)) {
+            $foto = $foto;
+        } else {
+            $foto = $this->input->post('gambar');
+        }
+        // print_r($foto); exit();
+
         $data = [
-            'nama' => $this->input->post('nama'),
-            'username'  => $this->input->post('username'),
-            'password' => $this->input->post('password'),
-            'role'    => $this->input->post('role')
+            'kode_gedung' => $this->input->post('kode_gedung'),
+            'nama_gedung' => $this->input->post('nama_gedung'),
+            'panjang' => $this->input->post('panjang'),
+            'lebar' => $this->input->post('lebar'),
+            'tinggi' => $this->input->post('tinggi'),
+            'lantai' => $this->input->post('lantai'),
+            'foto' => $foto,
+            'id_kondisi' => $this->input->post('id_kondisi'),
         ];
-        
-        if ($this->UserModel->update(['id' => $id], $data)) {
+
+        if ($this->GedungModel->update(['id' => $id], $data)) {
             $this->session->set_flashdata('flash', 'Data berhasil diupdate');
         } else {
             $this->session->set_flashdata('flash', 'Oops! Terjadi suatu kesalahan');
         }
 
-        redirect(base_url('admin/user'));
+        redirect(base_url('admin/gedung'));
     }
 
     public function delete($id){
-        if ($this->UserModel->delete(['id' => $id])) {
+        $data = $this->GedungModel->findBy(['id' => $id])->row();
+        @unlink(FCPATH . 'uploads/img/sarpras/' . $data->foto);
+        if ($this->GedungModel->delete(['id' => $id])) {
             $this->session->set_flashdata('flash', 'Data berhasil dihapus');
         } else {
             $this->session->set_flashdata('flash', 'Oops! Terjadi suatu kesalahan');
         }
-        redirect('admin/user');
+        redirect('admin/gedung');
     }
 }
