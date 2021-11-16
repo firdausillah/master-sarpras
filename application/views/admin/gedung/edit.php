@@ -21,15 +21,15 @@
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Panjang</label>
-                        <input type="number" class="form-control" value="<?= $gedung->panjang ?>" name="panjang">
+                        <input type="number" class="form-control" value="<?= $gedung->panjang ?>" name="panjang" placeholder="dalam Meter">
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Lebar</label>
-                        <input type="number" class="form-control" value="<?= $gedung->lebar ?>" name="lebar">
+                        <input type="number" class="form-control" value="<?= $gedung->lebar ?>" name="lebar" placeholder="dalam Meter">
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Tinggi</label>
-                        <input type="number" class="form-control" value="<?= $gedung->tinggi ?>" name="tinggi">
+                        <input type="number" class="form-control" value="<?= $gedung->tinggi ?>" name="tinggi" placeholder="dalam Meter">
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Lantai</label>
@@ -39,8 +39,8 @@
                         <label class="form-label">Foto</label>
                         <div class="row p-3">
                             <div class="col-12 text-center">
-                                <a href="<?= base_url('uploads/img/sarpras/' . $gedung->foto) ?>">
-                                    <img src="<?= base_url('uploads/img/sarpras/' . $gedung->foto) ?>" height="90px" alt="">
+                                <a href="<?= base_url('uploads/img/sarpras/gedung/' . $gedung->foto) ?>">
+                                    <img src="<?= base_url('uploads/img/sarpras/gedung/' . $gedung->foto) ?>" height="90px" alt="">
                                 </a>
                             </div>
                         </div>

@@ -18,36 +18,36 @@
                     <thead>
                         <tr>
                             <th>No</th>
-                            <th class="text-midle">Kode Gedung</th>
                             <th class="text-midle">Nama Gedung</th>
+                            <th class="text-midle">Kode Ruang</th>
+                            <th class="text-midle">Nama Ruang</th>
                             <th class="text-midle">Panjang</th>
                             <th class="text-midle">Lebar</th>
                             <th class="text-midle">Tinggi</th>
-                            <th class="text-midle">Lantai</th>
                             <th class="text-midle">Foto</th>
                             <th class="text-midle">Kondisi</th>
                             <th class="text-midle">Action</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <?php foreach ($gedung as $no => $ged) : ?>
+                        <?php foreach ($ruang as $no => $room) : ?>
                             <tr>
                                 <td><?= $no + 1; ?></td>
-                                <td><?= $ged->kode_gedung ?></td>
-                                <td><?= $ged->nama_gedung ?></td>
-                                <td><?= $ged->panjang ?> Meter</td>
-                                <td><?= $ged->lebar ?> Meter</td>
-                                <td><?= $ged->tinggi ?> Meter</td>
-                                <td><?= $ged->lantai ?> Lantai</td>
+                                <td><?= $room->nama_gedung ?></td>
+                                <td><?= $room->kode_ruang ?></td>
+                                <td><?= $room->nama_ruang ?></td>
+                                <td><?= $room->panjang ?> Meter</td>
+                                <td><?= $room->lebar ?> Meter</td>
+                                <td><?= $room->tinggi ?> Meter</td>
                                 <td class="text-center">
-                                    <a href="<?= base_url('uploads/img/sarpras/gedung/' . $ged->foto) ?>">
-                                        <img src="<?= base_url('uploads/img/sarpras/gedung/' . $ged->foto) ?>" height="40px" alt="">
+                                    <a href="<?= base_url('uploads/img/sarpras/ruang/' . $room->foto) ?>">
+                                        <img src="<?= base_url('uploads/img/sarpras/ruang/' . $room->foto) ?>" height="40px" alt="">
                                     </a>
                                 </td>
-                                <td><?= $ged->kondisi ?></td>
+                                <td><?= $room->kondisi ?></td>
                                 <td>
-                                    <a href="<?= base_url('admin/gedung/edit/' . $ged->id) ?>" class="btn btn-info btn-sm"><i class="fa fa-edit"></i></a>
-                                    <a href="<?= base_url('admin/gedung/delete/' . $ged->id) ?>" class="btn btn-danger btn-sm tombol-hapus"><i class="fa fa-trash"></i></a>
+                                    <a href="<?= base_url('admin/ruang/edit/' . $room->id) ?>" class="btn btn-info btn-sm"><i class="fa fa-edit"></i></a>
+                                    <a href="<?= base_url('admin/ruang/delete/' . $room->id) ?>" class="btn btn-danger btn-sm tombol-hapus"><i class="fa fa-trash"></i></a>
                                 </td>
                             </tr>
                         <?php endforeach ?>
@@ -65,20 +65,29 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">gedung</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Ruang</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <?= form_open_multipart('admin/gedung/save') ?>
+            <?= form_open_multipart('admin/ruang/save') ?>
             <div class="modal-body">
                 <div class="mb-3">
-                    <label class="form-label">Kode Gedung <span class="text-danger">*</span></label>
-                    <input type="text" class="form-control" name="kode_gedung" required>
+                    <label class="form-label">Nama Gedung <span class="text-danger">*</span></label>
+                    <select class="form-control" name="id_gedung" id="id_gedung" required>
+                        <option value="">Pilih Disini</option>
+                        <?php foreach ($gedung as $g) : ?>
+                            <option value="<?= $g->id ?>"><?= $g->nama_gedung ?></option>
+                        <?php endforeach ?>
+                    </select>
                 </div>
                 <div class="mb-3">
-                    <label class="form-label">Nama Gedung <span class="text-danger">*</span></label>
-                    <input type="text" class="form-control" name="nama_gedung" required>
+                    <label class="form-label">Kode Ruang <span class="text-danger">*</span></label>
+                    <input type="text" class="form-control" name="kode_ruang" required>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Nama Ruang <span class="text-danger">*</span></label>
+                    <input type="text" class="form-control" name="nama_ruang" required>
                 </div>
                 <div class="mb-3">
                     <label class="form-label">Panjang</label>
@@ -91,10 +100,6 @@
                 <div class="mb-3">
                     <label class="form-label">Tinggi</label>
                     <input type="number" class="form-control" name="tinggi" placeholder="dalam Meter">
-                </div>
-                <div class="mb-3">
-                    <label class="form-label">Lantai</label>
-                    <input type="number" class="form-control" name="lantai">
                 </div>
                 <div class="mb-3">
                     <label class="form-label">Foto</label>
