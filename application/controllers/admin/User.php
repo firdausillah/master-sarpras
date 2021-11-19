@@ -9,7 +9,7 @@ class User extends CI_Controller
         $this->load->model('UserModel');
 
         if ($this->session->userdata('role') != 'admin') {
-            redirect(base_url("auth/login"));
+            redirect(base_url("auth"));
         }
     }
 

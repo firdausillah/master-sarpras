@@ -8,13 +8,27 @@ class Barang extends CI_Controller
         parent::__construct();
         $this->load->model('BarangModel');
         $this->load->model('KondisiModel');
+        $this->load->model('SarprasModel');
 
-        // if ($this->session->Barangdata('role') != 'admin') {
-        //     redirect(base_url("auth/login"));
-        // }
+        if ($this->session->userdata('role') != 'admin') {
+            redirect(base_url("auth"));
+        }
     }
 
     public function index(){
+
+        // $barang = $this->BarangModel->get()->result();
+        // foreach ($barang as $key => $value) {
+        //     $query = $this->db->query("SELECT * FROM tb_sarpras where id_barang = " . $value->id)->result();
+            // foreach ($sarpras as $key => $val) {
+            //     $sarpras_row = $this->SarprasModel->findBy(['tb_sarpras.id_barang' => $val->id])->row();
+                
+            // }
+            // print_r($query[$key]->jumlah); 
+        // }
+        // print_r(array_sum($query->jumlah)); 
+        // exit();
+
         $data = [
             'title' => 'Barang',
             'barang' => $this->BarangModel->get()->result(),

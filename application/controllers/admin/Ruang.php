@@ -10,9 +10,9 @@ class Ruang extends CI_Controller
         $this->load->model('GedungModel');
         $this->load->model('KondisiModel');
 
-        // if ($this->session->Ruangdata('role') != 'admin') {
-        //     redirect(base_url("auth/login"));
-        // }
+        if ($this->session->userdata('role') != 'admin') {
+            redirect(base_url("auth"));
+        }
     }
 
     public function index(){

@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>Login Siswa</title>
+    <title>Login Sarpras <?= $title ? $title->nama_sekolah : '' ?></title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!--===============================================================================================-->
