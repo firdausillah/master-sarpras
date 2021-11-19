@@ -9,7 +9,9 @@ class Sarpras extends CI_Controller
         $this->load->model('SarprasModel');
         $this->load->model('RuangModel');
         $this->load->model('GedungModel');
+        $this->load->model('BarangModel');
         $this->load->model('KondisiModel');
+        $this->load->model('StatusModel');
 
         // if ($this->session->sarprasdata('role') != 'admin') {
         //     redirect(base_url("auth/login"));
@@ -36,43 +38,6 @@ class Sarpras extends CI_Controller
         $this->load->view('layout_admin/base', $data);
     }
 
-    public function save(){
-        
-        if (! empty($_FILES['foto']['name'])) {
-            $config = [
-                'upload_path' => './uploads/img/sarpras/sarpras',
-                'allowed_types' => 'gif|jpg|png',
-                'max_size' => 2000,
-                'file_name' => 'img_'. $this->input->post('kode_sarpras'),
-                'overwrite' => true
-            ];
-            
-            $this->load->library('upload', $config);
-
-            if ($this->upload->do_upload('foto')) $foto = $this->upload->data('file_name');
-            else exit('Error : ' . $this->upload->display_errors());
-        }
-
-        $data = [
-            'kode_sarpras' => $this->input->post('kode_sarpras'),
-            'nama_sarpras' => $this->input->post('nama_sarpras'),
-            'panjang' => $this->input->post('panjang'),
-            'lebar' => $this->input->post('lebar'),
-            'tinggi' => $this->input->post('tinggi'),
-            'lantai' => $this->input->post('lantai'),
-            'foto' => $foto,
-            'id_kondisi' => $this->input->post('id_kondisi'),
-        ];
-        
-        if ($this->SarprasModel->add($data)) {
-            $this->session->set_flashdata('flash', 'Data berhasil dimasukan');
-        } else {
-            $this->session->set_flashdata('flash', 'Oops! Terjadi suatu kesalahan');
-        }
-
-        redirect(base_url('admin/sarpras'));
-    }
-
     public function gedung($id){
         $gedung = $this->GedungModel->findBy(['id' => $id])->row();
         $data = [
@@ -87,13 +52,85 @@ class Sarpras extends CI_Controller
     }
 
     public function ruang($id){
-        $gedung = $this->GedungModel->findBy(['id' => $id])->row();
+        $ruang = $this->RuangModel->findBy(['tb_ruang.id' => $id])->row();
         $data = [
-            'title' => 'Ruang '. $gedung->nama_gedung,
-            'id_gedung' => $id,
-            'ruang' => $this->RuangModel->findBy(['id_gedung' => $id])->result(),
+            'title' => 'Barang '. $ruang->nama_ruang,
+            'id_ruang' => $id,
+            'id_gedung' => $ruang->id_gedung,
+            'barang_ruang' => $this->SarprasModel->findBy(['tb_sarpras.id_ruang' => $id])->result(),
+            'barang' => $this->BarangModel->get()->result(),
             'kondisi' => $this->KondisiModel->get()->result(),
-            'content' => 'admin/sarpras/gedung'
+            'status' => $this->StatusModel->get()->result(),
+            'content' => 'admin/sarpras/ruang'
+        ];
+
+        $this->load->view('layout_admin/base', $data);
+    }
+
+    public function save(){
+
+        $kode_gedung = $this->GedungModel->findBy(['tb_gedung.id' => $this->input->post('id_gedung')])->row();
+        $kode_ruang = $this->RuangModel->findBy(['tb_ruang.id' => $this->input->post('id_ruang')])->row();
+        $kode_barang = $this->BarangModel->findBy(['id' => $this->input->post('id_barang')])->row();
+
+        // nomor urut
+        $nourut = $this->SarprasModel->cekUrut();
+        $urut = sprintf("%04s", $nourut + 1);
+
+        $kode = $kode_gedung->kode_gedung.$kode_ruang->kode_ruang.$kode_barang->kode_barang.$urut;
+        // print_r($kode); exit();
+
+        
+        if (! empty($_FILES['foto']['name'])) {
+            $config = [
+                'upload_path' => './uploads/img/sarpras/barang',
+                'allowed_types' => 'gif|jpg|png',
+                'max_size' => 2000,
+                'file_name' => 'img_'. $kode,
+                'overwrite' => true
+            ];
+            
+            $this->load->library('upload', $config);
+
+            if ($this->upload->do_upload('foto')) $foto = $this->upload->data('file_name');
+            else exit('Error : ' . $this->upload->display_errors());
+        }
+
+        $data = [
+            'id_ruang' => $this->input->post('id_ruang'),
+            'id_barang' => $this->input->post('id_barang'),
+            'id_status' => $this->input->post('id_status'),
+            'id_kondisi' => $this->input->post('id_kondisi'),
+            'kode_sarpras' => $kode,
+            'jumlah' => $this->input->post('jumlah'),
+            'tahun_masuk' => $this->input->post('tahun_masuk'),
+            'foto' => $foto,
+            'keterangan' => $this->input->post('keterangan')
+        ];
+        
+        if ($this->SarprasModel->add($data)) {
+            $this->session->set_flashdata('flash', 'Data berhasil dimasukan');
+        } else {
+            $this->session->set_flashdata('flash', 'Oops! Terjadi suatu kesalahan');
+        }
+
+        redirect(base_url($this->input->post('url')));
+    }
+
+    public function edit($id){
+
+        print_r($this->SarprasModel->findBy(['tb_sarpras.id' => $id])->row()); exit();
+
+        $ruang = $this->RuangModel->findBy(['tb_ruang.id' => $id])->row();
+        $data = [
+            'title' => 'Barang ',
+            'id_ruang' => $id,
+            'id_gedung' => $ruang->id_gedung,
+            'barang_ruang' => $this->SarprasModel->findBy(['tb_sarpras.id' => $id])->row(),
+            'barang' => $this->BarangModel->get()->result(),
+            'kondisi' => $this->KondisiModel->get()->result(),
+            'status' => $this->StatusModel->get()->result(),
+            'content' => 'admin/sarpras/ruang'
         ];
 
         $this->load->view('layout_admin/base', $data);

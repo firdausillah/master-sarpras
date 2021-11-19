@@ -30,10 +30,10 @@
                         <?php foreach ($ruang as $no => $ru) : ?>
                             <tr>
                                 <td><?= $no + 1; ?></td>
-                                <td><a href="<?= base_url('admin/barang/edit/' . $ru->id) ?>" class="text-dark"><?= $ru->nama_ruang ?></a></td>
+                                <td><a href="<?= base_url('admin/sarpras/ruang/' . $ru->id) ?>" class="text-dark"><?= $ru->nama_ruang ?></a></td>
                                 <td><?= $ru->kondisi ?></td>
                                 <td>
-                                    <a href="<?= base_url('admin/barang/edit/' . $ru->id) ?>" class="btn btn-info btn-sm"><i class="fa fa-edit"></i></a>
+                                    <a href="<?= base_url('admin/sarpras/ruang/' . $ru->id) ?>" class="btn btn-info btn-sm"><i class="fa fa-edit"></i></a>
                                 </td>
                             </tr>
                         <?php endforeach ?>
