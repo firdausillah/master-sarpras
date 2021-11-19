@@ -15,8 +15,12 @@
  	}
 
  	function findBy($id){
+		$this->db->select('tb_ruang.id, tb_gedung.nama_gedung, kode_ruang, nama_ruang, tb_ruang.panjang, tb_ruang.lebar, tb_ruang.tinggi, tb_ruang.foto, kondisi');
+		$this->db->from('tb_ruang');
+		$this->db->join('tb_kondisi', 'tb_ruang.id_kondisi = tb_kondisi.id', 'left');
+		$this->db->join('tb_gedung', 'tb_ruang.id_gedung = tb_gedung.id', 'left');
  		$this->db->where($id);
- 		return $this->db->get('tb_ruang');
+ 		return $this->db->get();
  	}
 
  	function add($data){

@@ -16,6 +16,8 @@
                         <tr>
                             <th>No</th>
                             <th class="text-midle">Nama Gedung</th>
+                            <th class="text-midle">Lantai</th>
+                            <th class="text-midle">Kondisi</th>
                             <th class="text-midle">Jumlah Ruang</th>
                             <th class="text-midle">Action</th>
                         </tr>
@@ -25,6 +27,8 @@
                             <tr>
                                 <td><?= $no + 1; ?></td>
                                 <td><a href="<?= base_url('admin/sarpras/gedung/' . $bar['id']) ?>" class="text-dark"><?= $bar['nama_gedung'] ?></a></td>
+                                <td><?= $bar['lantai'] ?></td>
+                                <td><?= $bar['kondisi'] ?></td>
                                 <td><?= $bar['jumlah_ruang'] ?></td>
                                 <td>
                                     <a href="<?= base_url('admin/sarpras/gedung/' . $bar['id']) ?>" class="btn btn-info btn-sm"><i class="fa fa-edit"></i></a>

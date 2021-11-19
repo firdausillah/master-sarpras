@@ -22,7 +22,7 @@ class Sarpras extends CI_Controller
         // exit();
         foreach($gedung as $ged) :
             $query = $this->db->query("SELECT * FROM tb_ruang where id_gedung = ".$ged->id)->result();
-            $r[] = ['id' => $ged->id, 'nama_gedung' => $ged->nama_gedung, 'jumlah_ruang' => count($query)];
+            $r[] = ['id' => $ged->id, 'nama_gedung' => $ged->nama_gedung, 'lantai' => $ged->lantai, 'kondisi' => $ged->kondisi, 'jumlah_ruang' => count($query)];
         endforeach;
         // print_r($r);
 
@@ -74,6 +74,19 @@ class Sarpras extends CI_Controller
     }
 
     public function gedung($id){
+        $gedung = $this->GedungModel->findBy(['id' => $id])->row();
+        $data = [
+            'title' => 'Ruang '. $gedung->nama_gedung,
+            'id_gedung' => $id,
+            'ruang' => $this->RuangModel->findBy(['id_gedung' => $id])->result(),
+            'kondisi' => $this->KondisiModel->get()->result(),
+            'content' => 'admin/sarpras/gedung'
+        ];
+
+        $this->load->view('layout_admin/base', $data);
+    }
+
+    public function ruang($id){
         $gedung = $this->GedungModel->findBy(['id' => $id])->row();
         $data = [
             'title' => 'Ruang '. $gedung->nama_gedung,
