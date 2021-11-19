@@ -50,6 +50,7 @@
                                 <td><?= $br->keterangan ?></td>
                                 <td>
                                     <a href="<?= base_url('admin/sarpras/edit/' . $br->id) ?>" class="btn btn-info btn-sm"><i class="fa fa-edit"></i></a>
+                                    <a href="<?= base_url('admin/sarpras/delete?id=' . $br->id . '&id_ruang=' . $br->id_ruang) ?>" class="btn btn-danger btn-sm tombol-hapus"><i class="fa fa-eraser"></i></a>
                                 </td>
                             </tr>
                         <?php endforeach ?>

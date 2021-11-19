@@ -128,9 +128,9 @@ class Ruang extends CI_Controller
     }
 
     public function delete($id){
-        $data = $this->RuangModel->findBy(['id' => $id])->row();
+        $data = $this->RuangModel->findBy(['tb_ruang.id' => $id])->row();
         @unlink(FCPATH . 'uploads/img/sarpras/' . $data->foto);
-        if ($this->RuangModel->delete(['id' => $id])) {
+        if ($this->RuangModel->delete(['tb_ruang.id' => $id])) {
             $this->session->set_flashdata('flash', 'Data berhasil dihapus');
         } else {
             $this->session->set_flashdata('flash', 'Oops! Terjadi suatu kesalahan');
