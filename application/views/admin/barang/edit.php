@@ -19,6 +19,15 @@
                         <label class="form-label">Nama Barang <span class="text-danger">*</span></label>
                         <input type="text" class="form-control" value="<?= $barang->nama_barang ?>" name="nama_barang" required>
                     </div>
+                    <div class="mb-3">
+                        <label class="form-label">Jenis Barang <span class="text-danger">*</span></label>
+                        <select class="form-control" name="id_jenis_sarana" id="id_jenis_sarana" required>
+                            <option value="">Pilih Disini</option>
+                            <?php foreach ($jenis_sarana as $jenis) : ?>
+                                <option <?= $barang->id_jenis_sarana == $jenis->id ? 'selected' : '' ?> value="<?= $jenis->id ?>"><?= $jenis->jenis_sarana ?></option>
+                            <?php endforeach ?>
+                        </select>
+                    </div>
                 </div>
                 <div class="card-footer text-right">
                     <a href="<?= base_url() ?>admin/barang" class="btn btn-secondary btn-sm">Kembali</a>

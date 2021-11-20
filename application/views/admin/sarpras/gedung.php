@@ -23,6 +23,7 @@
                             <th>No</th>
                             <th class="text-midle">Nama Ruang</th>
                             <th class="text-midle">Kondisi</th>
+                            <th class="text-midle">Jumlah Barang</th>
                             <th class="text-midle">Action</th>
                         </tr>
                     </thead>
@@ -30,10 +31,11 @@
                         <?php foreach ($ruang as $no => $ru) : ?>
                             <tr>
                                 <td><?= $no + 1; ?></td>
-                                <td><a href="<?= base_url('admin/sarpras/ruang/' . $ru->id) ?>" class="text-dark"><?= $ru->nama_ruang ?></a></td>
-                                <td><?= $ru->kondisi ?></td>
+                                <td><a href="<?= base_url('admin/sarpras/ruang/' . $ru['id']) ?>" class="text-dark"><?= $ru['nama_ruang'] ?></a></td>
+                                <td><?= $ru['kondisi'] ?></td>
+                                <td><?= $ru['jumlah_barang'] ?></td>
                                 <td>
-                                    <a href="<?= base_url('admin/sarpras/ruang/' . $ru->id) ?>" class="btn btn-info btn-sm"><i class="fa fa-edit"></i></a>
+                                    <a href="<?= base_url('admin/sarpras/ruang/' . $ru['id']) ?>" class="btn btn-info btn-sm"><i class="fa fa-edit"></i></a>
                                 </td>
                             </tr>
                         <?php endforeach ?>

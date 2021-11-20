@@ -7,7 +7,8 @@
 	}
  	
  	function get(){
-		$this->db->select('*');
+		$this->db->select('tb_barang.id, kode_barang, nama_barang, jenis_sarana');
+		$this->db->join('tb_jenis_sarana', 'tb_barang.id_jenis_sarana=tb_jenis_sarana.id');
 		return $this->db->get('tb_barang');
  	}
 

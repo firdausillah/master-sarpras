@@ -9,6 +9,7 @@ class Barang extends CI_Controller
         $this->load->model('BarangModel');
         $this->load->model('KondisiModel');
         $this->load->model('SarprasModel');
+        $this->load->model('Jenis_saranaModel');
 
         if ($this->session->userdata('role') != 'admin') {
             redirect(base_url("auth"));
@@ -26,12 +27,13 @@ class Barang extends CI_Controller
             // }
             // print_r($query[$key]->jumlah); 
         // }
-        // print_r(array_sum($query->jumlah)); 
+        // print_r($barang); 
         // exit();
 
         $data = [
             'title' => 'Barang',
             'barang' => $this->BarangModel->get()->result(),
+            'jenis_sarana' => $this->Jenis_saranaModel->get()->result(),
             'content' => 'admin/barang/table'
         ];
 
@@ -58,6 +60,7 @@ class Barang extends CI_Controller
         $data = [
             'title' => 'Edit Barang',
             'barang' => $this->BarangModel->findBy(['id' => $id])->row(),
+            'jenis_sarana' => $this->Jenis_saranaModel->get()->result(),
             'content' => 'admin/barang/edit'
         ];
 

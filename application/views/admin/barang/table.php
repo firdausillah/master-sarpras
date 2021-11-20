@@ -20,6 +20,7 @@
                             <th>No</th>
                             <th class="text-midle">Kode Barang</th>
                             <th class="text-midle">Nama Barang</th>
+                            <th class="text-midle">Jenis Barang</th>
                             <th class="text-midle">Action</th>
                         </tr>
                     </thead>
@@ -29,6 +30,7 @@
                                 <td><?= $no + 1; ?></td>
                                 <td><?= $bar->kode_barang ?></td>
                                 <td><?= $bar->nama_barang ?></td>
+                                <td><?= $bar->jenis_sarana ?></td>
                                 <td>
                                     <a href="<?= base_url('admin/barang/edit/' . $bar->id) ?>" class="btn btn-info btn-sm"><i class="fa fa-edit"></i></a>
                                     <a href="<?= base_url('admin/barang/delete/' . $bar->id) ?>" class="btn btn-danger btn-sm tombol-hapus"><i class="fa fa-trash"></i></a>
@@ -63,6 +65,15 @@
                 <div class="mb-3">
                     <label class="form-label">Nama barang <span class="text-danger">*</span></label>
                     <input type="text" class="form-control" name="nama_barang" required>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Jenis Barang <span class="text-danger">*</span></label>
+                    <select class="form-control" name="id_jenis_sarana" id="id_jenis_sarana" required>
+                        <option value="">Pilih Disini</option>
+                        <?php foreach ($jenis_sarana as $jenis) : ?>
+                            <option value="<?= $jenis->id ?>"><?= $jenis->jenis_sarana ?></option>
+                        <?php endforeach ?>
+                    </select>
                 </div>
             </div>
             <div class="modal-footer">
