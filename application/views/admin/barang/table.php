@@ -21,6 +21,7 @@
                             <th class="text-midle">Kode Barang</th>
                             <th class="text-midle">Nama Barang</th>
                             <th class="text-midle">Jenis Barang</th>
+                            <th class="text-midle">Jumlah</th>
                             <th class="text-midle">Action</th>
                         </tr>
                     </thead>
@@ -31,6 +32,7 @@
                                 <td><?= $bar->kode_barang ?></td>
                                 <td><?= $bar->nama_barang ?></td>
                                 <td><?= $bar->jenis_sarana ?></td>
+                                <td><?= $bar->jumlah ?></td>
                                 <td>
                                     <a href="<?= base_url('admin/barang/edit/' . $bar->id) ?>" class="btn btn-info btn-sm"><i class="fa fa-edit"></i></a>
                                     <a href="<?= base_url('admin/barang/delete/' . $bar->id) ?>" class="btn btn-danger btn-sm tombol-hapus"><i class="fa fa-trash"></i></a>

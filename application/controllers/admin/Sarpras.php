@@ -39,8 +39,8 @@ class Sarpras extends CI_Controller
     }
 
     public function gedung($id){
-        $ruang = $this->RuangModel->get()->result();
-        // print_r($gedung);
+        $ruang = $this->RuangModel->findBy(['id_gedung' => $id])->result();
+        // print_r($ruang);
         // exit();
         foreach($ruang as $ru) :
             $query = $this->db->query("SELECT * FROM tb_sarpras where id_ruang = ".$ru->id)->result();

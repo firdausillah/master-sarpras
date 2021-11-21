@@ -19,14 +19,6 @@ class Barang extends CI_Controller
     public function index(){
 
         // $barang = $this->BarangModel->get()->result();
-        // foreach ($barang as $key => $value) {
-        //     $query = $this->db->query("SELECT * FROM tb_sarpras where id_barang = " . $value->id)->result();
-            // foreach ($sarpras as $key => $val) {
-            //     $sarpras_row = $this->SarprasModel->findBy(['tb_sarpras.id_barang' => $val->id])->row();
-                
-            // }
-            // print_r($query[$key]->jumlah); 
-        // }
         // print_r($barang); 
         // exit();
 
@@ -41,10 +33,12 @@ class Barang extends CI_Controller
     }
 
     public function save(){
+        // print_r($_POST); exit();
         
         $data = [
             'kode_barang' => $this->input->post('kode_barang'),
-            'nama_barang' => $this->input->post('nama_barang')
+            'nama_barang' => $this->input->post('nama_barang'),
+            'id_jenis_sarana' => $this->input->post('id_jenis_sarana')
         ];
         
         if ($this->BarangModel->add($data)) {
@@ -70,7 +64,8 @@ class Barang extends CI_Controller
     public function update($id){
         $data = [
             'kode_barang' => $this->input->post('kode_barang'),
-            'nama_barang' => $this->input->post('nama_barang')
+            'nama_barang' => $this->input->post('nama_barang'),
+            'id_jenis_sarana' => $this->input->post('id_jenis_sarana')
         ];
 
         if ($this->BarangModel->update(['id' => $id], $data)) {

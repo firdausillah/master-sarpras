@@ -35,7 +35,7 @@
                     <div class="row text-muted">
                         <div class="col-6 text-left">
                             <p class="mb-0">
-                                <a href="<?= base_url() ?>assets/index.html" class="text-muted"><strong>AdminKit Demo</strong></a> &copy;
+                                <a href="#" class="text-muted"><strong>AdminKit</strong></a> &copy;
                             </p>
                         </div>
                     </div>
