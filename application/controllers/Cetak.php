@@ -8,25 +8,24 @@ class Cetak extends CI_Controller {
 
 	function __construct(){
 		parent::__construct();
-		$this->load->model('GelombangModel', 'mGelombang');
-		$this->load->model('AuthModel', 'mAuth');
-		$this->load->model('PersyaratanModel', 'mPersyaratan');
-		$this->load->model('ProfileModel', 'mProfile');
-		$this->load->model('Persyaratan_siswaModel');
-		$this->load->model('SiswaModel', 'mSiswa');
+		$this->load->model('AuthModel');
+		$this->load->model('ProfileModel');
+		$this->load->model('SarprasModel');
+		$this->load->model('RuangModel');
 	}
 
 	public function laporan_ruang($id){
 
-		print_r($id); exit();
+		// print_r($this->SarprasModel->get()->result()); exit();
+		// print_r($this->RuangModel->get()->result()); exit();
+		// print_r($this->RuangModel->findBy(['tb_ruang.id' => $id])->row()); exit();
 
 		$data = [
-			'siswa' => $this->mSiswa->joinJurusanKode($id)->row(),
-			'profile' => $this->mProfile->findBy(['id' => 1])->row(),
-			'persyaratan' => $this->mPersyaratan->get()->result(),
-			'persyaratan_siswa' => $this->Persyaratan_siswaModel->leftJoinPersyaratan($this->session->userdata('id'))->result()
+			'profile' => $this->ProfileModel->findBy(['id' => 1])->row(),
+			'barang_ruang' => $this->SarprasModel->findBy(['tb_sarpras.id_ruang' => $id])->result(),
+			'ruang' => $this->RuangModel->findBy(['tb_ruang.id' => $id])->row()
 		];
-		$this->load->view('cetak/bukti', $data);
+		$this->load->view('cetak/laporan_ruang', $data);
 	}
 
 }

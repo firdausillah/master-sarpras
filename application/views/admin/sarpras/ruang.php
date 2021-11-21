@@ -10,8 +10,11 @@
         <div class="col-sm-12 col-xl-12 d-flex">
             <div class="card flex-fill">
                 <div class="card-header text-right">
-                    <a href="<?= base_url('admin/sarpras') ?>" class="btn btn-warning">
+                    <a href="<?= base_url('admin/sarpras') ?>" class="btn btn-danger">
                         Kembali
+                    </a>
+                    <a href="<?= base_url('cetak/laporan_ruang/' . $id_ruang) ?>" target='_blank' class="btn btn-success">
+                        Print
                     </a>
                     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
                         Tambah <?= $title ? $title : 'Judul Page' ?>
