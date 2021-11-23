@@ -17,30 +17,32 @@
                         Tambah <?= $title ? $title : 'Judul Page' ?>
                     </button>
                 </div>
-                <table id="myTable" class="table table-bordered table-responsive table-sm p-3">
-                    <thead>
-                        <tr>
-                            <th>No</th>
-                            <th class="text-midle">Nama Ruang</th>
-                            <th class="text-midle">Kondisi</th>
-                            <th class="text-midle">Jumlah Barang</th>
-                            <th class="text-midle">Action</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php foreach ($ruang as $no => $ru) : ?>
+                <div class="table-rensponsive">
+                    <table id="myTable" class="table table-bordered table-responsive table-sm p-3">
+                        <thead>
                             <tr>
-                                <td><?= $no + 1; ?></td>
-                                <td><a href="<?= base_url('admin/sarpras/ruang/' . $ru['id']) ?>" class="text-dark"><?= $ru['nama_ruang'] ?></a></td>
-                                <td><?= $ru['kondisi'] ?></td>
-                                <td><?= $ru['jumlah_barang'] ?></td>
-                                <td>
-                                    <a href="<?= base_url('admin/sarpras/ruang/' . $ru['id']) ?>" class="btn btn-info btn-sm"><i class="fa fa-edit"></i></a>
-                                </td>
+                                <th>No</th>
+                                <th class="text-midle">Nama Ruang</th>
+                                <th class="text-midle">Kondisi</th>
+                                <th class="text-midle">Jumlah Barang</th>
+                                <th class="text-midle">Action</th>
                             </tr>
-                        <?php endforeach ?>
-                    </tbody>
-                </table>
+                        </thead>
+                        <tbody>
+                            <?php foreach ($ruang as $no => $ru) : ?>
+                                <tr>
+                                    <td><?= $no + 1; ?></td>
+                                    <td><a href="<?= base_url('admin/sarpras/ruang/' . $ru['id']) ?>" class="text-dark"><?= $ru['nama_ruang'] ?></a></td>
+                                    <td><?= $ru['kondisi'] ?></td>
+                                    <td><?= $ru['jumlah_barang'] ?></td>
+                                    <td>
+                                        <a href="<?= base_url('admin/sarpras/ruang/' . $ru['id']) ?>" class="btn btn-info btn-sm"><i class="fa fa-edit"></i></a>
+                                    </td>
+                                </tr>
+                            <?php endforeach ?>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     </div>

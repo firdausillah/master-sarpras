@@ -14,33 +14,35 @@
                         Tambah <?= $title ? $title : 'Judul Page' ?>
                     </button>
                 </div>
-                <table id="myTable" class="table table-bordered table-responsive table-sm p-3">
-                    <thead>
-                        <tr>
-                            <th>No</th>
-                            <th class="text-midle">Kode Barang</th>
-                            <th class="text-midle">Nama Barang</th>
-                            <th class="text-midle">Jenis Barang</th>
-                            <th class="text-midle">Jumlah</th>
-                            <th class="text-midle">Action</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php foreach ($barang as $no => $bar) : ?>
+                <div class="table-responsive">
+                    <table id="myTable" class="table table-bordered table-responsive table-sm p-3">
+                        <thead>
                             <tr>
-                                <td><?= $no + 1; ?></td>
-                                <td><?= $bar->kode_barang ?></td>
-                                <td><?= $bar->nama_barang ?></td>
-                                <td><?= $bar->jenis_sarana ?></td>
-                                <td><?= $bar->jumlah ?></td>
-                                <td>
-                                    <a href="<?= base_url('admin/barang/edit/' . $bar->id) ?>" class="btn btn-info btn-sm"><i class="fa fa-edit"></i></a>
-                                    <a href="<?= base_url('admin/barang/delete/' . $bar->id) ?>" class="btn btn-danger btn-sm tombol-hapus"><i class="fa fa-trash"></i></a>
-                                </td>
+                                <th>No</th>
+                                <th class="text-midle">Kode Barang</th>
+                                <th class="text-midle">Nama Barang</th>
+                                <th class="text-midle">Jenis Barang</th>
+                                <th class="text-midle">Jumlah</th>
+                                <th class="text-midle">Action</th>
                             </tr>
-                        <?php endforeach ?>
-                    </tbody>
-                </table>
+                        </thead>
+                        <tbody>
+                            <?php foreach ($barang as $no => $bar) : ?>
+                                <tr>
+                                    <td><?= $no + 1; ?></td>
+                                    <td><?= $bar->kode_barang ?></td>
+                                    <td><?= $bar->nama_barang ?></td>
+                                    <td><?= $bar->jenis_sarana ?></td>
+                                    <td><?= $bar->jumlah ?></td>
+                                    <td>
+                                        <a href="<?= base_url('admin/barang/edit/' . $bar->id) ?>" class="btn btn-info btn-sm"><i class="fa fa-edit"></i></a>
+                                        <a href="<?= base_url('admin/barang/delete/' . $bar->id) ?>" class="btn btn-danger btn-sm tombol-hapus"><i class="fa fa-trash"></i></a>
+                                    </td>
+                                </tr>
+                            <?php endforeach ?>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     </div>

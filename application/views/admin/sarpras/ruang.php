@@ -20,45 +20,47 @@
                         Tambah <?= $title ? $title : 'Judul Page' ?>
                     </button>
                 </div>
-                <table id="myTable" class="table table-bordered table-responsive table-sm p-3">
-                    <thead>
-                        <tr>
-                            <th>No</th>
-                            <th class="text-midle">Kode Inventaris</th>
-                            <th class="text-midle">Nama Barang</th>
-                            <th class="text-midle">Jumlah</th>
-                            <th class="text-midle">Tahun Masuk</th>
-                            <th class="text-midle">Kondisi</th>
-                            <th class="text-midle">Status</th>
-                            <th class="text-midle">Foto</th>
-                            <th class="text-midle">Keterangan</th>
-                            <th class="text-midle">Action</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php foreach ($barang_ruang as $no => $br) : ?>
+                <div class="table-responsive">
+                    <table id="myTable" class="table table-bordered table-responsive table-sm p-3">
+                        <thead>
                             <tr>
-                                <td><?= $no + 1; ?></td>
-                                <td><?= $br->kode_sarpras ?></td>
-                                <td><?= $br->nama_barang ?></td>
-                                <td><?= $br->jumlah ?></td>
-                                <td><?= $br->tahun_masuk ?></td>
-                                <td><?= $br->kondisi ?></td>
-                                <td><?= $br->status ?></td>
-                                <td class="text-center">
-                                    <a href="<?= base_url('uploads/img/sarpras/barang/' . $br->foto) ?>">
-                                        <img src="<?= base_url('uploads/img/sarpras/barang/' . $br->foto) ?>" height="40px" alt="">
-                                    </a>
-                                </td>
-                                <td><?= $br->keterangan ?></td>
-                                <td>
-                                    <a href="<?= base_url('admin/sarpras/edit/' . $br->id) ?>" class="btn btn-info btn-sm"><i class="fa fa-edit"></i></a>
-                                    <a href="<?= base_url('admin/sarpras/delete?id=' . $br->id . '&id_ruang=' . $br->id_ruang) ?>" class="btn btn-danger btn-sm tombol-hapus"><i class="fa fa-eraser"></i></a>
-                                </td>
+                                <th>No</th>
+                                <th class="text-midle">Kode Inventaris</th>
+                                <th class="text-midle">Nama Barang</th>
+                                <th class="text-midle">Jumlah</th>
+                                <th class="text-midle">Tahun Masuk</th>
+                                <th class="text-midle">Kondisi</th>
+                                <th class="text-midle">Status</th>
+                                <th class="text-midle">Foto</th>
+                                <th class="text-midle">Keterangan</th>
+                                <th class="text-midle">Action</th>
                             </tr>
-                        <?php endforeach ?>
-                    </tbody>
-                </table>
+                        </thead>
+                        <tbody>
+                            <?php foreach ($barang_ruang as $no => $br) : ?>
+                                <tr>
+                                    <td><?= $no + 1; ?></td>
+                                    <td><?= $br->kode_sarpras ?></td>
+                                    <td><?= $br->nama_barang ?></td>
+                                    <td><?= $br->jumlah ?></td>
+                                    <td><?= $br->tahun_masuk ?></td>
+                                    <td><?= $br->kondisi ?></td>
+                                    <td><?= $br->status ?></td>
+                                    <td class="text-center">
+                                        <a href="<?= base_url('uploads/img/sarpras/barang/' . $br->foto) ?>">
+                                            <img src="<?= base_url('uploads/img/sarpras/barang/' . $br->foto) ?>" height="40px" alt="">
+                                        </a>
+                                    </td>
+                                    <td><?= $br->keterangan ?></td>
+                                    <td>
+                                        <a href="<?= base_url('admin/sarpras/edit/' . $br->id) ?>" class="btn btn-info btn-sm"><i class="fa fa-edit"></i></a>
+                                        <a href="<?= base_url('admin/sarpras/delete?id=' . $br->id . '&id_ruang=' . $br->id_ruang) ?>" class="btn btn-danger btn-sm tombol-hapus"><i class="fa fa-eraser"></i></a>
+                                    </td>
+                                </tr>
+                            <?php endforeach ?>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     </div>

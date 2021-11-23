@@ -14,45 +14,47 @@
                         Tambah <?= $title ? $title : 'Judul Page' ?>
                     </button>
                 </div>
-                <table id="myTable" class="table table-bordered table-responsive table-sm p-3">
-                    <thead>
-                        <tr>
-                            <th>No</th>
-                            <th class="text-midle">Nama Gedung</th>
-                            <th class="text-midle">Kode Ruang</th>
-                            <th class="text-midle">Nama Ruang</th>
-                            <th class="text-midle">Panjang</th>
-                            <th class="text-midle">Lebar</th>
-                            <th class="text-midle">Tinggi</th>
-                            <th class="text-midle">Foto</th>
-                            <th class="text-midle">Kondisi</th>
-                            <th class="text-midle">Action</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php foreach ($ruang as $no => $room) : ?>
+                <div class="table-responsive">
+                    <table id="myTable" class="table table-bordered table-responsive table-sm p-3">
+                        <thead>
                             <tr>
-                                <td><?= $no + 1; ?></td>
-                                <td><?= $room->nama_gedung ?></td>
-                                <td><?= $room->kode_ruang ?></td>
-                                <td><?= $room->nama_ruang ?></td>
-                                <td><?= $room->panjang ?> Meter</td>
-                                <td><?= $room->lebar ?> Meter</td>
-                                <td><?= $room->tinggi ?> Meter</td>
-                                <td class="text-center">
-                                    <a href="<?= base_url('uploads/img/sarpras/ruang/' . $room->foto) ?>">
-                                        <img src="<?= base_url('uploads/img/sarpras/ruang/' . $room->foto) ?>" height="40px" alt="">
-                                    </a>
-                                </td>
-                                <td><?= $room->kondisi ?></td>
-                                <td>
-                                    <a href="<?= base_url('admin/ruang/edit/' . $room->id) ?>" class="btn btn-info btn-sm"><i class="fa fa-edit"></i></a>
-                                    <a href="<?= base_url('admin/ruang/delete/' . $room->id) ?>" class="btn btn-danger btn-sm tombol-hapus"><i class="fa fa-trash"></i></a>
-                                </td>
+                                <th>No</th>
+                                <th class="text-midle">Nama Gedung</th>
+                                <th class="text-midle">Kode Ruang</th>
+                                <th class="text-midle">Nama Ruang</th>
+                                <th class="text-midle">Panjang</th>
+                                <th class="text-midle">Lebar</th>
+                                <th class="text-midle">Tinggi</th>
+                                <th class="text-midle">Foto</th>
+                                <th class="text-midle">Kondisi</th>
+                                <th class="text-midle">Action</th>
                             </tr>
-                        <?php endforeach ?>
-                    </tbody>
-                </table>
+                        </thead>
+                        <tbody>
+                            <?php foreach ($ruang as $no => $room) : ?>
+                                <tr>
+                                    <td><?= $no + 1; ?></td>
+                                    <td><?= $room->nama_gedung ?></td>
+                                    <td><?= $room->kode_ruang ?></td>
+                                    <td><?= $room->nama_ruang ?></td>
+                                    <td><?= $room->panjang ?> Meter</td>
+                                    <td><?= $room->lebar ?> Meter</td>
+                                    <td><?= $room->tinggi ?> Meter</td>
+                                    <td class="text-center">
+                                        <a href="<?= base_url('uploads/img/sarpras/ruang/' . $room->foto) ?>">
+                                            <img src="<?= base_url('uploads/img/sarpras/ruang/' . $room->foto) ?>" height="40px" alt="">
+                                        </a>
+                                    </td>
+                                    <td><?= $room->kondisi ?></td>
+                                    <td>
+                                        <a href="<?= base_url('admin/ruang/edit/' . $room->id) ?>" class="btn btn-info btn-sm"><i class="fa fa-edit"></i></a>
+                                        <a href="<?= base_url('admin/ruang/delete/' . $room->id) ?>" class="btn btn-danger btn-sm tombol-hapus"><i class="fa fa-trash"></i></a>
+                                    </td>
+                                </tr>
+                            <?php endforeach ?>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     </div>

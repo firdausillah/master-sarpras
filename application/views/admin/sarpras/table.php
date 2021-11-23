@@ -11,32 +11,34 @@
             <div class="card flex-fill">
                 <div class="card-header text-right">
                 </div>
-                <table id="myTable" class="table table-bordered table-responsive table-sm p-3">
-                    <thead>
-                        <tr>
-                            <th>No</th>
-                            <th class="text-midle">Nama Gedung</th>
-                            <th class="text-midle">Lantai</th>
-                            <th class="text-midle">Kondisi</th>
-                            <th class="text-midle">Jumlah Ruang</th>
-                            <th class="text-midle">Action</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php foreach ($gedung as $no => $bar) : ?>
+                <div class="table-responsive">
+                    <table id="myTable" class="table table-bordered table-responsive table-sm p-3">
+                        <thead>
                             <tr>
-                                <td><?= $no + 1; ?></td>
-                                <td><a href="<?= base_url('admin/sarpras/gedung/' . $bar['id']) ?>" class="text-dark"><?= $bar['nama_gedung'] ?></a></td>
-                                <td><?= $bar['lantai'] ?></td>
-                                <td><?= $bar['kondisi'] ?></td>
-                                <td><?= $bar['jumlah_ruang'] ?></td>
-                                <td>
-                                    <a href="<?= base_url('admin/sarpras/gedung/' . $bar['id']) ?>" class="btn btn-info btn-sm"><i class="fa fa-edit"></i></a>
-                                </td>
+                                <th>No</th>
+                                <th class="text-midle">Nama Gedung</th>
+                                <th class="text-midle">Lantai</th>
+                                <th class="text-midle">Kondisi</th>
+                                <th class="text-midle">Jumlah Ruang</th>
+                                <th class="text-midle">Action</th>
                             </tr>
-                        <?php endforeach ?>
-                    </tbody>
-                </table>
+                        </thead>
+                        <tbody>
+                            <?php foreach ($gedung as $no => $bar) : ?>
+                                <tr>
+                                    <td><?= $no + 1; ?></td>
+                                    <td><a href="<?= base_url('admin/sarpras/gedung/' . $bar['id']) ?>" class="text-dark"><?= $bar['nama_gedung'] ?></a></td>
+                                    <td><?= $bar['lantai'] ?></td>
+                                    <td><?= $bar['kondisi'] ?></td>
+                                    <td><?= $bar['jumlah_ruang'] ?></td>
+                                    <td>
+                                        <a href="<?= base_url('admin/sarpras/gedung/' . $bar['id']) ?>" class="btn btn-info btn-sm"><i class="fa fa-edit"></i></a>
+                                    </td>
+                                </tr>
+                            <?php endforeach ?>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     </div>
