@@ -33,7 +33,7 @@ class Profile extends CI_Controller
         if (!empty($_FILES['gambar']['name'])) { // $_FILES untuk mengambil data logo
             $cfg = [
                 'upload_path' => './assets/img',
-                'allowed_types' => 'png',
+                'allowed_types' => 'png|jpg|gif|jpeg',
                 'file_name' => 'logo',
                 'overwrite' => (empty($logo) ? FALSE : TRUE),
                 'max_size' => '2028',

@@ -34,7 +34,7 @@ class Ruang extends CI_Controller
         if (! empty($_FILES['foto']['name'])) {
             $config = [
                 'upload_path' => './uploads/img/sarpras/ruang',
-                'allowed_types' => 'gif|jpg|png',
+                'allowed_types' => 'gif|jpg|png|jpeg',
                 'max_size' => 2000,
                 'file_name' => 'img_'. $gedung->kode_gedung . $this->input->post('kode_ruang'),
                 'overwrite' => true
