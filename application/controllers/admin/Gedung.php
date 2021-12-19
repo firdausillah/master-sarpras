@@ -9,8 +9,12 @@ class Gedung extends CI_Controller
         $this->load->model('GedungModel');
         $this->load->model('KondisiModel');
 
-        if ($this->session->userdata('role') != 'admin') {
+        if ($this->session->userdata('status') != 'login') {
             redirect(base_url("auth"));
+        } else {
+            if ($this->session->userdata('role') != 'admin') {
+                redirect(base_url("index.html"));
+            }
         }
     }
 

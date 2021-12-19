@@ -4,7 +4,7 @@
         <div class="col-auto d-none d-sm-block">
             <h3><?= $title ? $title : 'Judul Page' ?></h3>
         </div>
-        
+
     </div>
     <div class="row">
         <div class="col-12 col-lg-12 col-xxl-9 d-flex">
@@ -34,8 +34,8 @@
                                 <td><?= $usr->password ?></td>
                                 <td><?= $usr->role ?></td>
                                 <td>
-                                    <a href="<?= base_url('admin/user/edit/'.$usr->id) ?>" class="btn btn-info btn-sm"><i class="fa fa-edit"></i></a>
-                                    <a href="<?= base_url('admin/user/delete/'.$usr->id) ?>" class="btn btn-danger btn-sm tombol-hapus"><i class="fa fa-trash"></i></a>
+                                    <a href="<?= base_url('admin/user/edit/' . $usr->id) ?>" class="btn btn-info btn-sm"><i class="fa fa-edit"></i></a>
+                                    <a href="<?= base_url('admin/user/delete/' . $usr->id) ?>" class="btn btn-danger btn-sm tombol-hapus"><i class="fa fa-trash"></i></a>
                                 </td>
                             </tr>
                         <?php endforeach ?>
@@ -63,7 +63,6 @@
                 <div class="mb-3">
                     <label class="form-label">Nama</label>
                     <input type="text" class="form-control" name="nama" required>
-                    <input type="hidden" class="form-control" name="role" value="admin" required>
                 </div>
                 <div class="mb-3">
                     <label class="form-label">Username</label>
@@ -72,6 +71,14 @@
                 <div class="mb-3">
                     <label class="form-label">password</label>
                     <input type="text" class="form-control" name="password" required>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">password</label>
+                    <select class="form-control" name="role" id="role">
+                        <option value="">Pilih disini</option>
+                        <option value="admin">admin</option>
+                        <option value="penanggungjawab">Penanggungjawab Ruang</option>
+                    </select>
                 </div>
             </div>
             <div class="modal-footer">

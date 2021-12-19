@@ -8,8 +8,12 @@ class Profile extends CI_Controller
         parent::__construct();
         $this->load->model('ProfileModel');
 
-        if ($this->session->userdata('role') != 'admin') {
+        if ($this->session->userdata('status') != 'login') {
             redirect(base_url("auth"));
+        } else {
+            if ($this->session->userdata('role') != 'admin') {
+                redirect(base_url("index.html"));
+            }
         }
     }
 

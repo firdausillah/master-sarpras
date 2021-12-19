@@ -13,7 +13,7 @@ class Sarpras extends CI_Controller
         $this->load->model('KondisiModel');
         $this->load->model('StatusModel');
 
-        if ($this->session->userdata('role') != 'admin') {
+        if ($this->session->userdata('status') != 'login') {
             redirect(base_url("auth"));
         }
     }

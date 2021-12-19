@@ -10,12 +10,15 @@ class Ruang extends CI_Controller
         $this->load->model('GedungModel');
         $this->load->model('KondisiModel');
 
-        if ($this->session->userdata('role') != 'admin') {
+        if ($this->session->userdata('status') != 'login') {
             redirect(base_url("auth"));
         }
     }
 
     public function index(){
+
+        
+
         $data = [
             'title' => 'Ruang',
             'ruang' => $this->RuangModel->get()->result(),
@@ -48,13 +51,14 @@ class Ruang extends CI_Controller
 
         $data = [
             'id_gedung' => $this->input->post('id_gedung'),
+            'id_kondisi' => $this->input->post('id_kondisi'),
+            'id_user' => $this->input->post('id_user'),
             'kode_ruang' => $this->input->post('kode_ruang'),
             'nama_ruang' => $this->input->post('nama_ruang'),
             'panjang' => $this->input->post('panjang'),
             'lebar' => $this->input->post('lebar'),
             'tinggi' => $this->input->post('tinggi'),
             'foto' => $foto,
-            'id_kondisi' => $this->input->post('id_kondisi'),
         ];
         
         if ($this->RuangModel->add($data)) {
@@ -109,13 +113,14 @@ class Ruang extends CI_Controller
 
         $data = [
             'id_gedung' => $this->input->post('id_gedung'),
+            'id_kondisi' => $this->input->post('id_kondisi'),
+            'id_user' => $this->input->post('id_user'),
             'kode_ruang' => $this->input->post('kode_ruang'),
             'nama_ruang' => $this->input->post('nama_ruang'),
             'panjang' => $this->input->post('panjang'),
             'lebar' => $this->input->post('lebar'),
             'tinggi' => $this->input->post('tinggi'),
             'foto' => $foto,
-            'id_kondisi' => $this->input->post('id_kondisi'),
         ];
 
         if ($this->RuangModel->update(['id' => $id], $data)) {

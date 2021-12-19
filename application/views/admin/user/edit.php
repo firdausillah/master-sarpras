@@ -24,6 +24,14 @@
                         <label class="form-label">password</label>
                         <input type="text" class="form-control" name="password" value="<?= $user->password ?>" required>
                     </div>
+                    <div class="mb-3">
+                        <label class="form-label">password</label>
+                        <select class="form-control" name="role" id="role">
+                            <option value="">Pilih disini</option>
+                            <option <?= $user->role == "admin" ? 'selected' : '' ?> value="admin">admin</option>
+                            <option <?= $user->role == "penanggungjawab" ? 'selected' : '' ?> value="penanggungjawab">Penanggungjawab Ruang</option>
+                        </select>
+                    </div>
                 </div>
                 <div class="card-footer text-right">
                     <a href="<?= base_url() ?>admin/user" class="btn btn-secondary btn-sm">Kembali</a>

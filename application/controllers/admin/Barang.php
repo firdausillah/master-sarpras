@@ -11,16 +11,12 @@ class Barang extends CI_Controller
         $this->load->model('SarprasModel');
         $this->load->model('Jenis_saranaModel');
 
-        if ($this->session->userdata('role') != 'admin') {
+        if ($this->session->userdata('status') != 'login') {
             redirect(base_url("auth"));
         }
     }
 
     public function index(){
-
-        // $barang = $this->BarangModel->get()->result();
-        // print_r($barang); 
-        // exit();
 
         $data = [
             'title' => 'Barang',
