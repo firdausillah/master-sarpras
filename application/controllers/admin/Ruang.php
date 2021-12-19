@@ -17,11 +17,15 @@ class Ruang extends CI_Controller
 
     public function index(){
 
-        
+        if ($this->session->userdata('role') == 'penanggungjawab') {
+            $ruang = $this->RuangModel->findBy(['id_user' => $this->session->userdata('id')])->result();
+        } else {
+            $ruang = $this->RuangModel->get()->result();
+        }
 
         $data = [
             'title' => 'Ruang',
-            'ruang' => $this->RuangModel->get()->result(),
+            'ruang' => $ruang,
             'gedung' => $this->GedungModel->get()->result(),
             'kondisi' => $this->KondisiModel->get()->result(),
             'content' => 'admin/ruang/table'

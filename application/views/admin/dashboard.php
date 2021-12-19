@@ -15,10 +15,9 @@
                                             <div class="card-body">
                                                 <h5 class="card-title mb-4">Jumlah asset(barang)</h5>
                                                 <h1 class="mt-1 mb-3"></h1>
-                                                <!-- <div class="mb-1">
-                                                    <span class="text-danger"> <i class="mdi mdi-arrow-bottom-right"></i> -3.65% </span>
-                                                    <span class="text-muted">Since last week</span>
-                                                </div> -->
+                                                <div class="mb-1 text-center">
+                                                    <h3 class="text-primary"><?= $jumlah_barang ?></h3>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -27,10 +26,9 @@
                                             <div class="card-body">
                                                 <h5 class="card-title mb-4">Jumlah Gedung</h5>
                                                 <h1 class="mt-1 mb-3 text-success"></h1>
-                                                <!-- <div class="mb-1">
-                                                    <span class="text-danger"> <i class="mdi mdi-arrow-bottom-right"></i> -3.65% </span>
-                                                    <span class="text-muted">Since last week</span>
-                                                </div> -->
+                                                <div class="mb-1 text-center">
+                                                    <h3 class="text-primary"><?= $jumlah_gedung ?></h3>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -39,10 +37,9 @@
                                             <div class="card-body">
                                                 <h5 class="card-title mb-4">Jumlah ruangan</h5>
                                                 <h1 class="mt-1 mb-3 text-danger"></h1>
-                                                <!-- <div class="mb-1">
-                                                    <span class="text-danger"> <i class="mdi mdi-arrow-bottom-right"></i> -3.65% </span>
-                                                    <span class="text-muted">Since last week</span>
-                                                </div> -->
+                                                <div class="mb-1 text-center">
+                                                    <h3 class="text-primary"><?= $jumlah_ruang ?></h3>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>

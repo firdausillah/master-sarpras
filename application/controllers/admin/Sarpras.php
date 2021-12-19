@@ -39,7 +39,11 @@ class Sarpras extends CI_Controller
     }
 
     public function gedung($id){
-        $ruang = $this->RuangModel->findBy(['id_gedung' => $id])->result();
+        if ($this->session->userdata('role') == 'penanggungjawab') {
+            $ruang = $this->RuangModel->findBy(['id_user' => $this->session->userdata('id'), 'id_gedung' => $id])->result();
+        } else {
+            $ruang = $this->RuangModel->findBy(['id_gedung' => $id])->result();
+        }
         // print_r($ruang);
         // exit();
         foreach($ruang as $ru) :

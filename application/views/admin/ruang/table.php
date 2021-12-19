@@ -82,7 +82,7 @@
                             <option value="<?= $g->id ?>"><?= $g->nama_gedung ?></option>
                         <?php endforeach ?>
                     </select>
-                    <input type="text" name="id_user" value="<?= $this->session->userdata('id') ?>">
+                    <input type="hiddens" name="id_user" value="<?= $this->session->userdata('id') ?>">
                 </div>
                 <div class="mb-3">
                     <label class="form-label">Kode Ruang <span class="text-danger">*</span></label>
