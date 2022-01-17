@@ -23,6 +23,7 @@ class Sarpras extends CI_Controller
         // print_r($gedung);
         // exit();
         foreach($gedung as $ged) :
+            $query = $this->db->query("SELECT * FROM tb_ruang where id_gedung = ".$ged->id." and id_user =". $this->session->userdata('id'))->result();
             $query = $this->db->query("SELECT * FROM tb_ruang where id_gedung = ".$ged->id)->result();
             $r[] = ['id' => $ged->id, 'nama_gedung' => $ged->nama_gedung, 'lantai' => $ged->lantai, 'kondisi' => $ged->kondisi, 'jumlah_ruang' => count($query)];
         endforeach;
@@ -46,10 +47,14 @@ class Sarpras extends CI_Controller
         }
         // print_r($ruang);
         // exit();
-        foreach($ruang as $ru) :
-            $query = $this->db->query("SELECT * FROM tb_sarpras where id_ruang = ".$ru->id)->result();
-            $r[] = ['id' => $ru->id, 'nama_ruang' => $ru->nama_ruang,  'kondisi' => $ru->kondisi, 'jumlah_barang' => count($query)];
-        endforeach;
+        if($ruang != null){
+            foreach($ruang as $ru) :
+                $query = $this->db->query("SELECT * FROM tb_sarpras where id_ruang = ".$ru->id)->result();
+                $r[] = ['id' => $ru->id, 'nama_ruang' => $ru->nama_ruang,  'kondisi' => $ru->kondisi, 'jumlah_barang' => count($query)];
+            endforeach;
+        } else {
+            $r = [];
+        }
         // print_r($r);
 
         // exit();
