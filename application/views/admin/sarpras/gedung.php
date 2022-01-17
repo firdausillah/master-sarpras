@@ -62,9 +62,10 @@
             <div class="modal-body">
                 <div class="mb-3">
                     <label class="form-label">Nama Gedung <span class="text-danger">*</span></label>
-                    <input type="text" class="form-control"value="<?= $title ?>" readonly>
-                    <input type="hidden"name="id_gedung" value="<?= $id_gedung ?>">
-                    <input type="hidden"name="url" value="<?= uri_string() ?>">
+                    <input type="text" class="form-control" value="<?= $title ?>" readonly>
+                    <input type="hidden" name="id_gedung" value="<?= $id_gedung ?>">
+                    <input type="hidden" name="id_user" value="<?= $this->session->userdata('id') ?>">
+                    <input type="hidden" name="url" value="<?= uri_string() ?>">
                 </div>
                 <div class="mb-3">
                     <label class="form-label">Kode Ruang <span class="text-danger">*</span></label>

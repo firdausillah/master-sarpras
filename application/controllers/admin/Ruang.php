@@ -51,10 +51,14 @@ class Ruang extends CI_Controller
 
             if ($this->upload->do_upload('foto')) $foto = $this->upload->data('file_name');
             else exit('Error : ' . $this->upload->display_errors());
+        } else {
+            $foto = null;
         }
+        // print_r($foto); exit();
 
         $data = [
             'id_gedung' => $this->input->post('id_gedung'),
+            'id_user' => $this->input->post('id_user'),
             'id_kondisi' => $this->input->post('id_kondisi'),
             'id_user' => $this->input->post('id_user'),
             'kode_ruang' => $this->input->post('kode_ruang'),

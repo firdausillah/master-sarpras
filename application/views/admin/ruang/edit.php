@@ -23,7 +23,7 @@
                     <div class="mb-3">
                         <label class="form-label">Kode Ruang <span class="text-danger">*</span></label>
                         <input type="text" class="form-control" value="<?= $ruang->kode_ruang ?>" name="kode_ruang" required>
-                        <input type="hidden" value="<?= $ruang->id_user ?>" name="id_user">
+                        <input type="hidden" value="<?= $ruang->id_user ? $ruang->id_user : $this->session->userdata('id')  ?>" name="id_user">
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Nama Ruang <span class="text-danger">*</span></label>
