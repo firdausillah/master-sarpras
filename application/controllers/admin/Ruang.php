@@ -83,7 +83,7 @@ class Ruang extends CI_Controller
     public function edit($id){
         $data = [
             'title' => 'Edit Ruang',
-            'ruang' => $this->RuangModel->findBy(['id' => $id])->row(),
+            'ruang' => $this->RuangModel->findBy(['tb_ruang.id' => $id])->row(),
             'gedung' => $this->GedungModel->get()->result(),
             'kondisi' => $this->KondisiModel->get()->result(),
             'content' => 'admin/ruang/edit'
