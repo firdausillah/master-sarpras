@@ -35,7 +35,7 @@ class Gedung extends CI_Controller
             $config = [
                 'upload_path' => './uploads/img/sarpras/gedung',
                 'allowed_types' => 'gif|jpg|png|jpeg',
-                'max_size' => 2000,
+                'max_size' => 5000,
                 'file_name' => 'img_'. $this->input->post('kode_gedung'),
                 'overwrite' => true
             ];
@@ -82,7 +82,7 @@ class Gedung extends CI_Controller
             $config = [
                 'upload_path' => './uploads/img/sarpras/gedung',
                 'allowed_types' => 'gif|jpg|png',
-                'max_size' => 2000,
+                'max_size' => 5000,
                 'file_name' => 'img_' . $this->input->post('kode_gedung'),
                 'overwrite' => true
             ];
