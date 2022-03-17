@@ -105,7 +105,7 @@ class Sarpras extends CI_Controller
             $config = [
                 'upload_path' => './uploads/img/sarpras/barang',
                 'allowed_types' => 'gif|jpg|png',
-                'max_size' => 2000,
+                'max_size' => 5000,
                 'file_name' => 'img_'. $kode,
                 'overwrite' => true
             ];
@@ -175,7 +175,7 @@ class Sarpras extends CI_Controller
             $config = [
                 'upload_path' => './uploads/img/sarpras/barang',
                 'allowed_types' => 'gif|jpg|png|jpeg',
-                'max_size' => 2000,
+                'max_size' => 5000,
                 'file_name' => 'img_' . $kode,
                 'overwrite' => true
             ];
